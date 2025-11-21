@@ -20,9 +20,9 @@ type ArtisteS struct {
 }
 
 type LocationsS struct {
-	Id        int    `json:"id"`
-	Locations string `json:"locations"`
-	Dates     string `json:"dates"`
+	Id        int      `json:"id"`
+	Locations []string `json:"locations"`
+	Dates     string   `json:"dates"`
 }
 
 type DatesS struct {
@@ -31,18 +31,18 @@ type DatesS struct {
 }
 
 type RelationS struct {
-	Id             int               `json:"id"`
-	DatesLocations map[string]string `json:"datesLocations"`
+	Id             int                 `json:"id"`
+	DatesLocations map[string][]string `json:"datesLocations"`
 }
 
 func ChargerLesDonnées() {
 	bloque := "https://groupietrackers.herokuapp.com/api/"
-	// fmt.Println(Ressource(bloque + "locations"))
 	listeDesArtiste := ChargerLesArtistes(bloque + "artists")
 	listeDesLocations := ChargerLesLocations(bloque + "locations")
 	listeDesDates := ChargerLesDates(bloque + "dates")
 	listeDesRelation := ChargerLesRelation(bloque + "relation")
 
+	fmt.Println(listeDesArtiste[45-1].Name)
 	fmt.Println(len(listeDesArtiste))
 	fmt.Println(len(listeDesLocations))
 	fmt.Println(len(listeDesDates))
@@ -56,12 +56,11 @@ func Ressource(url string) string {
 	body, _ := ioutil.ReadAll(res.Body)
 	valeur := string(body)
 	if valeur[0] != '[' {
-		total := "" //{"index":
+		total := ""
 		if url == "https://groupietrackers.herokuapp.com/api/locations" {
 			for i := 9; i < len(valeur)-2; i++ {
 				total += string(valeur[i])
 			}
-
 		} else if url == "https://groupietrackers.herokuapp.com/api/dates" {
 			for i := 9; i < len(valeur)-2; i++ {
 				total += string(valeur[i])
@@ -70,13 +69,9 @@ func Ressource(url string) string {
 			for i := 9; i < len(valeur)-2; i++ {
 				total += string(valeur[i])
 			}
-			// fmt.Println(total)
 		}
-		// fmt.Println(total)
 		valeur = total
 	}
-	fmt.Println()
-	// fmt.Println(string(body))
 	return valeur
 }
 
