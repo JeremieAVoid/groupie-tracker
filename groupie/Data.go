@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"strconv"
 )
 
 type ArtisteS struct {
@@ -124,90 +123,4 @@ func ChargerLesRelation(url string) []RelationS {
 		return []RelationS{}
 	}
 	return relation
-}
-
-// ici, on vas triée en fonction de la méthode choisie. Ce qui sera retourner sera le bon aurdre des ID.
-func Trie(lotDeListe LotDeListe, méthode string) []int {
-	listeDesArtistes := lotDeListe.listeDesArtistes
-	// listeDesLocations := lotDeListe.listeDesLocations
-	listeDesDates := lotDeListe.listeDesDates
-	// listeDesRelations := lotDeListe.listeDesRelations
-
-	listeDesID := []int{}
-	liste := []string{}
-	listeID := []int{}
-	switch méthode {
-	case "Id":
-		for i := 0; i < len(listeDesArtistes); i++ {
-			liste = append(liste, strconv.Itoa(listeDesArtistes[i].Id))
-			listeID = append(listeID, listeDesArtistes[i].Id)
-		}
-	case "Name":
-		for i := 0; i < len(listeDesArtistes); i++ {
-			liste = append(liste, listeDesArtistes[i].Name)
-			listeID = append(listeID, listeDesArtistes[i].Id)
-		}
-	case "Members":
-		for i := 0; i < len(listeDesArtistes); i++ {
-			liste = append(liste, strconv.Itoa(len(listeDesArtistes[i].Members)))
-			listeID = append(listeID, listeDesArtistes[i].Id)
-		}
-	case "CreationDate":
-		for i := 0; i < len(listeDesArtistes); i++ {
-			liste = append(liste, strconv.Itoa(listeDesArtistes[i].CreationDate))
-			listeID = append(listeID, listeDesArtistes[i].Id)
-		}
-	case "FirstAlbum":
-		for i := 0; i < len(listeDesArtistes); i++ {
-			liste = append(liste, listeDesArtistes[i].FirstAlbum)
-			listeID = append(listeID, listeDesArtistes[i].Id)
-		}
-	case "Locations":
-		for i := 0; i < len(listeDesArtistes); i++ {
-			liste = append(liste, listeDesArtistes[i].Locations)
-			listeID = append(listeID, listeDesArtistes[i].Id)
-		}
-	case "ConcertDates":
-		for i := 0; i < len(listeDesDates); i++ {
-			liste = append(liste, strconv.Itoa(len(listeDesDates[i].Dates)))
-			listeID = append(listeID, listeDesDates[i].Id)
-		}
-		// case "EndConcert":
-		// 	for i := 0; i < len(listeDesDates); i++ {
-		// 		liste = append(liste, strconv.Itoa(listeDesDates[i].Dates[len(listeDesDates[i].Dates)-1]))
-		// 		listeID = append(listeID, listeDesDates[i].Id)
-		// 	}
-	}
-	listeDesID = TrieParOdreAlphabétique(liste, listeID)
-	return listeDesID
-}
-
-func TrieParOdreAlphabétique(liste []string, listeID []int) []int {
-	//pour triée :
-	//pour tous les éléments de la liste je sélectionne le plus petit et je le place au début
-	// liste := []string{"ab", "aa", "b"}
-
-	// for i := 0; i < len(liste); i++ {
-	// 	println(liste[i] + "  " + strconv.Itoa(listeID[i]))
-	// }
-	for i := 0; i < len(liste)-1; i++ {
-		plusPetit := i
-		for j := i + 1; j < len(liste); j++ {
-			if liste[plusPetit] > liste[j] {
-				plusPetit = j
-			}
-		}
-		if plusPetit != i {
-			temps := liste[i]
-			tempsID := listeID[i]
-			liste[i] = liste[plusPetit]
-			listeID[i] = listeID[plusPetit]
-			liste[plusPetit] = temps
-			listeID[plusPetit] = tempsID
-		}
-	}
-	for i := 0; i < len(liste); i++ {
-		println(liste[i] + "  " + strconv.Itoa(listeID[i]))
-	}
-	return listeID
 }
