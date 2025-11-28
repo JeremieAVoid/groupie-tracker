@@ -7,5 +7,6 @@ import (
 
 func main() {
 	fmt.Println("début")
-	groupie.ChargerLesDonnées()
+	lotDeListe := groupie.ChargerLesDonnées()
+	groupie.Trie(lotDeListe, "Name")
 }
