@@ -1,18 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <link rel="stylesheet" href="../CSS/style.css"/>
-        <!-- <link href="style.css" type="stylesheet"> -->
+        <link rel="stylesheet" href="../CSS/styleBarreDeRecherche.css" />
     </head>
-    <body>
+    <body> 
+        <header>
+            <div id="barre-de-recherche">
+                <form action="">
+                    <select name="pets" autofocus="false" id="menu-déroulant-recherche" id="pet-select">
+                        <option value="Id">ID</option>
+                        <option value="Name">Nom</option>
+                        <option value="Members">Membres</option>
+                        <option value="CreationDate">Date de création</option>
+                        <option value="FirstAlbum">Première album</option>
+                        <option value="Locations">Localisation</option>
+                        <option value="ConcertDates">Dates des concerts</option>
+                    </select>
+                    <input id="inputDeRecherche" autofocus="true" type="text" placeholder="Rechercher" autocomplete="off" maxlength="50">
+                </form>
+            </div>
+            <!-- <img src="https://groupietrackers.herokuapp.com/api/images/queen.jpeg"> -->
+        </header>
         <main>
-            <p>oui</p>
+            <!-- <p>oui</p>-->
             <!-- Début du future template -->
-            <div class="Artiste">
+            <!-- <div class="Artiste">
                 <img src="test.png">
                 <h2>Nom</h2>
                 <button>En savoir plus</button>
-            </div>
+            </div>  -->
         </main>
     </body>
 </html>
