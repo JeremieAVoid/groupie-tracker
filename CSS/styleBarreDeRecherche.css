@@ -12,17 +12,23 @@ header{
 }
 
 #barre-de-recherche{
+    transition: 0.2s;
     position: relative;
     background-color: rgb(255, 255, 255);
     width: 80%;
     height: 40px;
     border: solid 0px black;
     border-radius: 12px;
-    box-shadow: 0px 0px 8px black;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    box-shadow: 0px 0px 4px black;
+}
+
+#barre-de-recherche:hover {
+    transition: 0.2s;
+    box-shadow: 0px 0px 8px black;
 }
 
 #menu-déroulant-recherche{
@@ -82,4 +88,19 @@ header{
     border: 0px;
     width: 70%;
     height: 80%;
+}
+
+#nombreAAfficher{
+    position: absolute;
+    top: 20px;
+    right: 5%;
+    width: 10%;
+    height: 40px;
+    border-radius: 15px;
+    text-align: center;
+    border: solid 1px black;
+}
+
+.blocWidth{
+    width: 100%;
 }

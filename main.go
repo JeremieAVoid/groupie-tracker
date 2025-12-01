@@ -9,13 +9,21 @@ import (
 )
 
 func main() {
+
+	// 1 Les fonctions :
+
 	fmt.Println("début")
 	lotDeListe := groupie.ChargerLesDonnées()
 	http.HandleFunc("/Rechercher", func(w http.ResponseWriter, r *http.Request) {
 		println("passe ici !")
-		groupie.Trie(lotDeListe, r.FormValue("catégorie"), r.FormValue("recherche"))
+		nombreAAfficherT := r.FormValue("nombreAAfficher")
+		nombreAAfficher := groupie.TransformerEnNombre(nombreAAfficherT)
+		println(nombreAAfficherT)
+		groupie.Recherche(lotDeListe, r.FormValue("catégorie"), r.FormValue("recherche"), nombreAAfficher)
 		fmt.Fprintln(w, "passe ici")
 	})
+
+	// 2 - Les CSS :
 
 	http.HandleFunc("/CSS/style.css", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/css; charset=utf-8")
@@ -25,6 +33,8 @@ func main() {
 		w.Header().Set("Content-Type", "text/css; charset=utf-8")
 		http.ServeFile(w, r, "CSS/styleBarreDeRecherche.css")
 	})
+
+	// 3 - Démarer le serveur :
 
 	log.Println("Serveur lancé sur http://localhost:8080")
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {

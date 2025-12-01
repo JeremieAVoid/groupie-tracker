@@ -3,7 +3,7 @@ package groupie
 import "strconv"
 
 // ici, on vas triée en fonction de la méthode choisie. Ce qui sera retourner sera le bon aurdre des ID.
-func Trie(lotDeListe LotDeListe, méthode string, recherche string) []int {
+func Trie(lotDeListe LotDeListe, méthode string, recherche string, nombreMaximum int) []int {
 	println("-------")
 	listeDesArtistes := lotDeListe.listeDesArtistes
 	// listeDesLocations := lotDeListe.listeDesLocations
@@ -72,12 +72,21 @@ func Trie(lotDeListe LotDeListe, méthode string, recherche string) []int {
 		}
 		listeDesID = TrieParOdreCroissant(listeN, listeID)
 	}
-	return listeDesID
+	if len(listeDesID) > nombreMaximum && nombreMaximum > 0 {
+		listeFini := []int{}
+		for i := 0; i < nombreMaximum; i++ {
+			listeFini = append(listeFini, listeDesID[i])
+		}
+		println(len(listeFini))
+		return listeFini
+	} else {
+		return listeDesID
+	}
 }
 
-func Recherche(lotDeListe LotDeListe, catégorie string, recherche string) []int {
-	Trie(lotDeListe, catégorie, recherche)
-	return []int{}
+func Recherche(lotDeListe LotDeListe, catégorie string, recherche string, nombreMaximum int) []int {
+	résultat := Trie(lotDeListe, catégorie, recherche, nombreMaximum)
+	return résultat
 }
 
 /*

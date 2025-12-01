@@ -6,8 +6,8 @@
     </head>
     <body> 
         <header>
-            <div id="barre-de-recherche">
-                <form action="Rechercher">
+            <form action="Rechercher" class="blocWidth">
+                <div id="barre-de-recherche">
                     <select name="catégorie" autofocus="false" id="menu-déroulant-recherche" id="pet-select">
                         <option value="Id">ID</option>
                         <option value="Name">Nom</option>
@@ -18,8 +18,11 @@
                         <option value="ConcertDates">Dates des concerts</option>
                     </select>
                     <input name="recherche" id="inputDeRecherche" autofocus="true" type="text" placeholder="Rechercher" autocomplete="off" maxlength="50">
-                </form>
-            </div>
+                </div>
+                <input name="nombreAAfficher" id="nombreAAfficher" autofocus="false" type="number" autocomplete="off" min=0 value=50>
+                <button type="submit">envoie</button>
+            </form>
+
             <!-- <img src="https://groupietrackers.herokuapp.com/api/images/queen.jpeg"> -->
         </header>
         <main>
