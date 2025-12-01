@@ -1,0 +1,26 @@
+body {
+  display: flex;           /* active Flexbox */
+  flex-direction: column;   /* empile les éléments verticalement */
+  justify-content:center ; /* centre horizontalement */
+  align-items:center ;     /* centre verticalement */
+  height: 100vh;           /* prend toute la hauteur de la fenêtre */
+  margin: 0;               /* enlève les marges par défaut */
+  background-color: rgb(53, 109, 112); 
+}
+
+.Bienvenue {
+  font-family: 'Arial', sans-serif;
+  color: white;
+  text-align: center;
+}
+
+footer {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 200%;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;   
+}
