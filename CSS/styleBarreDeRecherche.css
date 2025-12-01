@@ -90,8 +90,10 @@ header{
 }
 
 #bouton-envoie {
+    transition: 0.3s;
     border-top-right-radius: 13px;
     border-bottom-right-radius: 13px;
+    background-color: rgb(235, 235, 235);
 }
 
 #choix-nombre:focus,

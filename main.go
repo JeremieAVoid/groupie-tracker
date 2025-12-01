@@ -6,21 +6,22 @@ import (
 	"log"
 	"net/http"
 	"os/exec"
+	"strconv"
 )
 
 func main() {
-
-	// 1 Les fonctions :
-
 	fmt.Println("début")
+	// 1 Les fonctions :
 	lotDeListe := groupie.ChargerLesDonnées()
 	http.HandleFunc("/Rechercher", func(w http.ResponseWriter, r *http.Request) {
-		println("passe ici !")
 		nombreAAfficherT := r.FormValue("nombreAAfficher")
 		nombreAAfficher := groupie.TransformerEnNombre(nombreAAfficherT)
-		println(nombreAAfficherT)
-		groupie.Recherche(lotDeListe, r.FormValue("catégorie"), r.FormValue("recherche"), nombreAAfficher)
-		fmt.Fprintln(w, "passe ici")
+		liste := groupie.Recherche(lotDeListe, r.FormValue("catégorie"), r.FormValue("recherche"), nombreAAfficher)
+		texte := ""
+		for i := 0; i < len(liste); i++ {
+			texte += strconv.Itoa(liste[i]) + "\n"
+		}
+		fmt.Fprintln(w, texte)
 	})
 
 	// 2 - Les CSS :
