@@ -18,6 +18,7 @@ func Trie(lotDeListe LotDeListe, méthode string, recherche string, nombreMaximu
 	case "Id":
 		for i := 0; i < len(listeDesArtistes); i++ {
 			if PeutÊtreVuAvecSeTermeDeRecherche(strconv.Itoa(listeDesArtistes[i].Id), recherche) {
+				liste = append(liste, strconv.Itoa(listeDesArtistes[i].Id))
 				listeN = append(listeN, listeDesArtistes[i].Id)
 				listeID = append(listeID, listeDesArtistes[i].Id)
 			}
@@ -34,6 +35,7 @@ func Trie(lotDeListe LotDeListe, méthode string, recherche string, nombreMaximu
 	case "Members":
 		for i := 0; i < len(listeDesArtistes); i++ {
 			if PeutÊtreVuAvecSeTermeDeRecherche(strconv.Itoa(len(listeDesArtistes[i].Members)), recherche) {
+				liste = append(liste, strconv.Itoa(listeDesArtistes[i].Id))
 				listeN = append(listeN, len(listeDesArtistes[i].Members))
 				listeID = append(listeID, listeDesArtistes[i].Id)
 			}
@@ -42,6 +44,7 @@ func Trie(lotDeListe LotDeListe, méthode string, recherche string, nombreMaximu
 	case "CreationDate":
 		for i := 0; i < len(listeDesArtistes); i++ {
 			if PeutÊtreVuAvecSeTermeDeRecherche(strconv.Itoa(listeDesArtistes[i].CreationDate), recherche) {
+				liste = append(liste, strconv.Itoa(listeDesArtistes[i].Id))
 				listeN = append(listeN, listeDesArtistes[i].CreationDate)
 				listeID = append(listeID, listeDesArtistes[i].Id)
 			}
@@ -66,6 +69,7 @@ func Trie(lotDeListe LotDeListe, méthode string, recherche string, nombreMaximu
 	case "ConcertDates":
 		for i := 0; i < len(listeDesDates); i++ {
 			if PeutÊtreVuAvecSeTermeDeRecherche(strconv.Itoa(len(listeDesDates[i].Dates)), recherche) {
+				liste = append(liste, strconv.Itoa(listeDesArtistes[i].Id))
 				listeN = append(listeN, len(listeDesDates[i].Dates))
 				listeID = append(listeID, listeDesDates[i].Id)
 			}
@@ -77,11 +81,17 @@ func Trie(lotDeListe LotDeListe, méthode string, recherche string, nombreMaximu
 		for i := 0; i < nombreMaximum; i++ {
 			listeFini = append(listeFini, listeDesID[i])
 		}
-		println(len(listeFini))
-		return listeFini
-	} else {
-		return listeDesID
+		listeDesID = listeFini
 	}
+	if len(recherche) > 0 {
+		listeDesID = TrierParPetinance(liste, listeDesID)
+	}
+	println("--Début DEBUT trieParPetinance--")
+	for i := 0; i < len(listeDesID); i++ {
+		println(liste[i] + "  " + strconv.Itoa(listeDesID[i]))
+	}
+	println("--Fin--")
+	return listeDesID
 }
 
 func Recherche(lotDeListe LotDeListe, catégorie string, recherche string, nombreMaximum int) []int {

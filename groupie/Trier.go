@@ -29,9 +29,9 @@ func TrieParOdreAlphabétique(liste []string, listeID []int) []int {
 			listeID[plusPetit] = tempsID
 		}
 	}
-	for i := 0; i < len(liste); i++ {
-		println(liste[i] + "  " + strconv.Itoa(listeID[i]))
-	}
+	// for i := 0; i < len(liste); i++ {
+	// 	println(liste[i] + "  " + strconv.Itoa(listeID[i]))
+	// }
 	return listeID
 }
 
@@ -52,9 +52,9 @@ func TrieParOdreCroissant(liste []int, listeID []int) []int {
 			listeID[plusPetit] = tempsID
 		}
 	}
-	for i := 0; i < len(liste); i++ {
-		println(strconv.Itoa(liste[i]) + "  " + strconv.Itoa(listeID[i]))
-	}
+	// for i := 0; i < len(liste); i++ {
+	// 	println(strconv.Itoa(liste[i]) + "  " + strconv.Itoa(listeID[i]))
+	// }
 	return listeID
 }
 
@@ -96,9 +96,9 @@ func TriéLesDates(liste []string, listeID []int) []int {
 		}
 	}
 
-	for i := 0; i < len(liste); i++ {
-		println(liste[i] + "  " + strconv.Itoa(listeID[i]))
-	}
+	// for i := 0; i < len(liste); i++ {
+	// 	println(liste[i] + "  " + strconv.Itoa(listeID[i]))
+	// }
 	return listeID
 }
 
@@ -112,3 +112,54 @@ func TransformerEnNombre(texte string) int {
 	}
 	return valeur
 }
+
+//Comment je vais calculer la pertinance ?
+/*
+ 	recherche : 'qui'
+ 	résultat : 'qui mange', 'avec qui il est', 'qui'
+
+Moins il y a de caractère autres que ceux rechercher, plus la pertinance est élevé.
+
+Comme ils contiennent tous la chosse rechercher, inutile de le revérifier
+*/
+func TrierParPetinance(liste []string, listeID []int) []int {
+	for i := 0; i < len(liste)-1; i++ {
+		plusPetit := i
+		for j := i + 1; j < len(liste); j++ {
+			if len(liste[plusPetit]) > len(liste[j]) {
+				plusPetit = j
+			}
+		}
+		if plusPetit != i {
+			temps := liste[i]
+			tempsID := listeID[i]
+			liste[i] = liste[plusPetit]
+			listeID[i] = listeID[plusPetit]
+			liste[plusPetit] = temps
+			listeID[plusPetit] = tempsID
+		}
+	}
+	return listeID
+}
+
+/*
+func TrierParPetinance(liste []string, listeID []int) []int {
+	for i := 0; i < len(listeID)-1; i++ {
+		plusPetit := i
+		for j := i + 1; j < len(listeID); j++ {
+			if len(liste[listeID[plusPetit]-1]) > len(liste[listeID[j]-1]) {
+				plusPetit = j
+			}
+		}
+		if plusPetit != i {
+			temps := liste[listeID[i]-1]
+			tempsID := listeID[i]
+			liste[listeID[i]-1] = liste[listeID[plusPetit]-1]
+			listeID[i] = listeID[plusPetit]
+			liste[listeID[plusPetit]-1] = temps
+			listeID[plusPetit] = tempsID
+		}
+	}
+	return listeID
+}
+*/
