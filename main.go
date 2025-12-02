@@ -13,6 +13,7 @@ func main() {
 	fmt.Println("début")
 	// 1 Les fonctions :
 	lotDeListe := groupie.ChargerLesDonnées()
+
 	http.HandleFunc("/Rechercher", func(w http.ResponseWriter, r *http.Request) {
 		nombreAAfficherT := r.FormValue("nombreAAfficher")
 		nombreAAfficher := groupie.TransformerEnNombre(nombreAAfficherT)
@@ -21,7 +22,8 @@ func main() {
 		for i := 0; i < len(liste); i++ {
 			texte += strconv.Itoa(liste[i]) + "\n"
 		}
-		fmt.Fprintln(w, texte)
+		groupie.PlacerLesRésultaDeRecherche(w, r, liste, lotDeListe)
+		// fmt.Fprintln(w, texte)
 	})
 
 	http.HandleFunc("/informations", func(w http.ResponseWriter, r *http.Request) {
