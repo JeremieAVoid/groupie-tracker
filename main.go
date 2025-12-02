@@ -26,15 +26,10 @@ func main() {
 
 	http.HandleFunc("/informations", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
-		println(w)
-		println("------")
-		println(r)
 		http.ServeFile(w, r, "HTML/Informations.html")
-
 	})
 
 	// 2 - Les CSS :
-
 	http.HandleFunc("/CSS/style.css", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/css; charset=utf-8")
 		http.ServeFile(w, r, "CSS/style.css")
@@ -42,6 +37,10 @@ func main() {
 	http.HandleFunc("/CSS/styleBarreDeRecherche.css", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/css; charset=utf-8")
 		http.ServeFile(w, r, "CSS/styleBarreDeRecherche.css")
+	})
+	http.HandleFunc("/CSS/", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/css; charset=utf-8")
+		http.ServeFile(w, r, "CSS/styleInformation.css")
 	})
 
 	// 3 - Démarer le serveur :
