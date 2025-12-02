@@ -4,6 +4,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"strconv"
 )
 
 // Cette fonction doit être appeller uniquement si la liste est d'une taille supérieur à 0
@@ -59,15 +60,21 @@ func TrouverUnElementParID_RelationS(ID int, liste []RelationS) RelationS {
 }
 
 type PageData struct {
-	Prénom string
-	Image  string
+	Prénom         string
+	Image          string
+	DateDeCréation string
+	Membres        string
+	PremierAlbum   string
 }
 
 func PlacerLesRésultaDeRecherche(w http.ResponseWriter, r *http.Request, listeID []int, lotDeListe LotDeListe) {
 	//bloc principale :
 	data := PageData{
-		Prénom: "",
-		Image:  "",
+		Prénom:         "",
+		Image:          "",
+		DateDeCréation: "",
+		Membres:        "",
+		PremierAlbum:   "",
 	}
 	PlacerUnePage(w, r, data, "HTML/main.html")
 
@@ -75,9 +82,28 @@ func PlacerLesRésultaDeRecherche(w http.ResponseWriter, r *http.Request, listeI
 	for i := 0; i < len(listeID); i++ {
 		blocArtiste := TrouverUnElementParID_ArtisteS(listeID[i], lotDeListe.listeDesArtistes)
 		data2 := PageData{
-			Prénom: blocArtiste.Name,
-			Image:  blocArtiste.Image,
+			Prénom:         blocArtiste.Name,
+			Image:          blocArtiste.Image,
+			DateDeCréation: strconv.Itoa(blocArtiste.CreationDate),
+			Membres:        blocArtiste.Members[0],
+			PremierAlbum:   blocArtiste.FirstAlbum,
 		}
+		if r.FormValue("Image") != "on" {
+			data2.Image = ""
+		}
+		if r.FormValue("Name") != "on" {
+			data2.Prénom = ""
+		}
+		if r.FormValue("CreationDate") != "on" {
+			data2.DateDeCréation = ""
+		}
+		if r.FormValue("Members") != "on" {
+			data2.Membres = ""
+		}
+		if r.FormValue("FirstAlbum") != "on" {
+			data2.PremierAlbum = ""
+		}
+
 		PlacerUnePage(w, r, data2, "HTML/templateBlocSimple.html")
 	}
 }
