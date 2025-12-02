@@ -1,0 +1,23 @@
+img{
+    width: 50px;
+    height: 50px;
+    border: solid 2px black;
+    border-radius: 12px;
+    object-fit: contain;
+}
+
+
+#blocGauche{
+    position: relative;
+    display: flex;
+    /* align-items: center; */
+    display: 10px;
+    justify-content: center;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 100px;
+    height: 100%;
+    color: red;
+    background-color: azure;
+}
