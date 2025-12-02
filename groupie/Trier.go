@@ -142,16 +142,6 @@ func TrierParPetinance(liste []string, listeID []int) []int {
 	return listeID
 }
 
-//Cette fonction doit être appeller uniquement si la liste est d'une taille supérieur à 0
-func TrouverUnElementParID(ID int, liste []ArtisteS) ArtisteS {
-	for i := 0; i < len(liste); i++ {
-		if ID == liste[i].Id {
-			return liste[i]
-		}
-	}
-	return liste[0]
-}
-
 /*
 func TrierParPetinance(liste []string, listeID []int) []int {
 	for i := 0; i < len(listeID)-1; i++ {
