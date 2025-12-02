@@ -22,6 +22,7 @@ p{
   height: 100vh;           
   margin: 0;               
   background-color: rgb(53, 109, 112); 
+  text-align: center;
 }
 
 .Bienvenue {
@@ -39,4 +40,5 @@ footer {
   color: white;
   text-align: center;
   padding: 10px 0;   
+  align-items:center ; 
 }
