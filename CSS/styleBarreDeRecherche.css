@@ -4,7 +4,8 @@ body {
 }
 
 header {
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -110,7 +111,36 @@ header {
     font-weight: bold;
 }
 
-.listeDeSeQuiDoitÊtreAfficher {
+.listeDeSeQuiDoitÊtreAfficher{
+    background-color: rgb(238, 238, 238);
+    position: absolute;
+    top: 100px;
+    right: 0px;
+    border: solid 2px black;
+    border-right: 0px;
+    border-top-left-radius: 13px;
+    border-bottom-left-radius: 13px;
+    height: 145px;
+    width: 30px;
+    z-index: 4;
+}
+
+.listeDeSeQuiDoitÊtreAfficher label,
+.listeDeSeQuiDoitÊtreAfficher input[type=checkbox]{
+    display: none;
+}
+.listeDeSeQuiDoitÊtreAfficher:hover label,
+.listeDeSeQuiDoitÊtreAfficher:hover input[type=checkbox]{
+    display:inline;
+}
+
+/* .listeDeSeQuiDoitÊtreAfficher:hover,
+.listeDeSeQuiDoitÊtreAfficher{
+    transition:
+        width 0.2s;
+} */
+
+.listeDeSeQuiDoitÊtreAfficher:hover {
     background-color: white;
     position: absolute;
     top: 100px;
@@ -121,6 +151,9 @@ header {
     padding-right: 50px;
     border-top-left-radius: 13px;
     border-bottom-left-radius: 13px;
+    height: 125px;
+    width: 150px;
+    z-index: 4;
 }
 
 label {
