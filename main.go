@@ -13,22 +13,25 @@ func main() {
 	fmt.Println("début")
 	// 1 Les fonctions :
 	lotDeListe := groupie.ChargerLesDonnées()
+	listeID := []int{}
 
 	http.HandleFunc("/Rechercher", func(w http.ResponseWriter, r *http.Request) {
 		nombreAAfficherT := r.FormValue("nombreAAfficher")
 		nombreAAfficher := groupie.TransformerEnNombre(nombreAAfficherT)
-		liste := groupie.Recherche(lotDeListe, r.FormValue("catégorie"), r.FormValue("recherche"), nombreAAfficher)
+		listeID = groupie.Recherche(lotDeListe, r.FormValue("catégorie"), r.FormValue("recherche"), nombreAAfficher)
 		texte := ""
-		for i := 0; i < len(liste); i++ {
-			texte += strconv.Itoa(liste[i]) + "\n"
+		for i := 0; i < len(listeID); i++ {
+			texte += strconv.Itoa(listeID[i]) + "\n"
 		}
-		groupie.PlacerLesRésultaDeRecherche(w, r, liste, lotDeListe)
+		groupie.PlacerLesRésultaDeRecherche(w, r, listeID, lotDeListe)
 		// fmt.Fprintln(w, texte)
 	})
 
-	http.HandleFunc("/informations", func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "text/html; charset=utf-8")
-		http.ServeFile(w, r, "HTML/Informations.html")
+	http.HandleFunc("/informationsAppelle", func(w http.ResponseWriter, r *http.Request) {
+		idT := r.FormValue("Id")
+		groupie.ComplétéLaPageInformation(idT, listeID, lotDeListe, "HTML/Informations.html", w, r)
+		// w.Header().Set("Content-Type", "text/html; charset=utf-8")
+		// http.ServeFile(w, r, "HTML/Informations.html")
 	})
 
 	// 2 - Les CSS :
@@ -47,6 +50,10 @@ func main() {
 	http.HandleFunc("/CSS/styleTemplate.css", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/css; charset=utf-8")
 		http.ServeFile(w, r, "CSS/styleTemplate.css")
+	})
+	http.HandleFunc("/HTML/Informations.html", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/html; charset=utf-8")
+		http.ServeFile(w, r, "HTML/Informations.html")
 	})
 
 	// 3 - Démarer le serveur :
