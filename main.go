@@ -29,7 +29,6 @@ func main() {
 
 	http.HandleFunc("/informationsAppelle", func(w http.ResponseWriter, r *http.Request) {
 		idT := r.FormValue("Id")
-		println(idT)
 		groupie.ComplétéLaPageInformation(idT, listeID, lotDeListe, "HTML/Informations.html", w, r)
 		// w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		// http.ServeFile(w, r, "HTML/Informations.html")

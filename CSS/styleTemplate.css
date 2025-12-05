@@ -1,4 +1,9 @@
+body{
+    background-color: rgba(218, 208, 255, 0.543);
+}
+
 .bloc {
+    margin: 5px;
     padding-bottom: 10px;
     transition: 0.2s;
     position: relative;
