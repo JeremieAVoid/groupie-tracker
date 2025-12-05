@@ -40,14 +40,14 @@ func main() {
 		w.Header().Set("Content-Type", "text/css; charset=utf-8")
 		http.ServeFile(w, r, "CSS/styleBarreDeRecherche.css")
 	})
-	http.HandleFunc("/CSS/", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/CSS/styleInformation.css", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/css; charset=utf-8")
 		http.ServeFile(w, r, "CSS/styleInformation.css")
 	})
-	// http.HandleFunc("/CSS/", func(w http.ResponseWriter, r *http.Request) {
-	// 	w.Header().Set("Content-Type", "text/css; charset=utf-8")
-	// 	http.ServeFile(w, r, "CSS/styleTemplate.css")
-	// })
+	http.HandleFunc("/CSS/styleTemplate.css", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/css; charset=utf-8")
+		http.ServeFile(w, r, "CSS/styleTemplate.css")
+	})
 
 	// 3 - Démarer le serveur :
 
