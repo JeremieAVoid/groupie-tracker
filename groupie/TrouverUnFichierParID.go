@@ -60,21 +60,31 @@ func TrouverUnElementParID_RelationS(ID int, liste []RelationS) RelationS {
 }
 
 type PageData struct {
-	Prénom         string
-	Image          string
-	DateDeCréation string
-	Membres        string
-	PremierAlbum   string
+	Prénom                string
+	Image                 string
+	DateDeCréation        string
+	Membres               string
+	PremierAlbum          string
+	VisiblePrénom         string
+	VisibleImage          string
+	VisibleDateDeCréation string
+	VisibleMembres        string
+	VisiblePremierAlbum   string
 }
 
 func PlacerLesRésultaDeRecherche(w http.ResponseWriter, r *http.Request, listeID []int, lotDeListe LotDeListe) {
 	//bloc principale :
 	data := PageData{
-		Prénom:         "",
-		Image:          "",
-		DateDeCréation: "",
-		Membres:        "",
-		PremierAlbum:   "",
+		Prénom:                "",
+		Image:                 "",
+		DateDeCréation:        "",
+		Membres:               "",
+		PremierAlbum:          "",
+		VisiblePrénom:         "",
+		VisibleImage:          "invisible",
+		VisibleDateDeCréation: "",
+		VisibleMembres:        "",
+		VisiblePremierAlbum:   "",
 	}
 	PlacerUnePage(w, r, data, "HTML/main.html")
 
@@ -90,18 +100,24 @@ func PlacerLesRésultaDeRecherche(w http.ResponseWriter, r *http.Request, listeI
 		}
 		if r.FormValue("Image") != "on" {
 			data2.Image = ""
+			data2.VisibleImage = "invisible"
 		}
 		if r.FormValue("Name") != "on" {
 			data2.Prénom = ""
+			data2.VisiblePrénom = "invisible"
 		}
 		if r.FormValue("CreationDate") != "on" {
 			data2.DateDeCréation = ""
+			data2.VisibleDateDeCréation = "invisible"
 		}
 		if r.FormValue("Members") != "on" {
 			data2.Membres = ""
+			data2.VisibleMembres = "invisible"
 		}
 		if r.FormValue("FirstAlbum") != "on" {
 			data2.PremierAlbum = ""
+			data2.VisiblePremierAlbum = "invisible"
+			println("ici")
 		}
 
 		PlacerUnePage(w, r, data2, "HTML/templateBlocSimple.html")
