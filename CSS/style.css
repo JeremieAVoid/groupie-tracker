@@ -1,0 +1,20 @@
+.Artiste{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-color: red;
+}
+
+.Artiste img {
+    width: 30%;
+    height: 30%;
+}
+
+main{
+    margin-right: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    /* flex-direction: row;
+    flex-direction:row-reverse; */
+}
