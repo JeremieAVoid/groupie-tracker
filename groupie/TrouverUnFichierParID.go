@@ -1,6 +1,7 @@
 package groupie
 
 import (
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -70,6 +71,7 @@ type PageData struct {
 	VisibleDateDeCréation string
 	VisibleMembres        string
 	VisiblePremierAlbum   string
+	Id                    string
 }
 
 func PlacerLesRésultaDeRecherche(w http.ResponseWriter, r *http.Request, listeID []int, lotDeListe LotDeListe) {
@@ -97,6 +99,7 @@ func PlacerLesRésultaDeRecherche(w http.ResponseWriter, r *http.Request, listeI
 			DateDeCréation: strconv.Itoa(blocArtiste.CreationDate),
 			Membres:        blocArtiste.Members[0],
 			PremierAlbum:   blocArtiste.FirstAlbum,
+			Id:             strconv.Itoa(blocArtiste.Id),
 		}
 		if r.FormValue("Image") != "on" {
 			data2.Image = ""
@@ -117,7 +120,6 @@ func PlacerLesRésultaDeRecherche(w http.ResponseWriter, r *http.Request, listeI
 		if r.FormValue("FirstAlbum") != "on" {
 			data2.PremierAlbum = ""
 			data2.VisiblePremierAlbum = "invisible"
-			println("ici")
 		}
 
 		PlacerUnePage(w, r, data2, "HTML/templateBlocSimple.html")
@@ -135,4 +137,25 @@ func PlacerUnePage(w http.ResponseWriter, r *http.Request, data PageData, lienPa
 	if err != nil {
 		log.Println("Erreur d'exécution du template:", err)
 	}
+}
+
+func ComplétéLaPageInformation(idT string, listeID []int, lotDeListe LotDeListe, nomPage string, w http.ResponseWriter, r *http.Request) {
+	id, err := strconv.Atoi(idT)
+	if err != nil {
+		fmt.Println(idT)
+		fmt.Println("Problème !")
+		// panic(err)
+		return
+	}
+	blocArtiste := TrouverUnElementParID_ArtisteS(listeID[id], lotDeListe.listeDesArtistes)
+
+	data2 := PageData{
+		Prénom:         blocArtiste.Name,
+		Image:          blocArtiste.Image,
+		DateDeCréation: strconv.Itoa(blocArtiste.CreationDate),
+		Membres:        blocArtiste.Members[0],
+		PremierAlbum:   blocArtiste.FirstAlbum,
+		Id:             strconv.Itoa(blocArtiste.Id),
+	}
+	PlacerUnePage(w, r, data2, nomPage)
 }
