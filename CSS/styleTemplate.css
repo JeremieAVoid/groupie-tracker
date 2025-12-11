@@ -1,4 +1,22 @@
+.bloc{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    border: solid 2px black;
+    padding: 0px;
+    color:black;
+}
+.prénom{
+    position: absolute;
+    top:-10px;
+}
+
 img {
+    position: absolute;
+    bottom: 10px;
     width: 50px;
     height: 50px;
     border: solid 2px black;
