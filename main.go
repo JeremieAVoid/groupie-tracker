@@ -75,7 +75,7 @@ func main() {
             }
             fmt.Fprintln(w, texte)
         })
-    })
+    }
 
     // Routes CSS
     http.HandleFunc("/CSS/style.css", func(w http.ResponseWriter, r *http.Request) {
@@ -101,4 +101,4 @@ func main() {
     if err := http.ListenAndServe(":8080", nil); err != nil {
         log.Fatal(err)
     }
-}
+
