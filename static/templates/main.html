@@ -2,14 +2,14 @@
 <html lang="fr">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../CSS/style.css"/>
-        <link rel="stylesheet" href="../CSS/styleBarreDeRecherche.css" />
-        <link rel="stylesheet" href="../CSS/styleTemplate.css" />
+        <link rel="stylesheet" href="/static/style/style.css"/>
+        <link rel="stylesheet" href="/static/style/styleBarreDeRecherche.css" />
+        <link rel="stylesheet" href="/static/style/styleTemplate.css" />
     </head>
     <body> 
         <header>
             <form action="Rechercher" class="blocWidth2">
-                <div class="barre-de-recherche choix-catégorie">
+                <div class="barre-de-recherche choix-catégorie bar">
                     <select name="catégorie" autofocus="false" id="choix-catégorie">
                         <option value="Name">Nom</option>
                         <option value="Id">ID</option>
@@ -20,15 +20,15 @@
                         <option value="ConcertDates">Dates des concerts</option>
                     </select>
                 </div>
-                <div class="barre-de-recherche choix-texte">
+                <div class="barre-de-recherche choix-texte bar">
                     <input name="recherche" id="espaceDeRecherche" autofocus="false" type="text" placeholder="Rechercher"
                         autocomplete="off" maxlength="50">
                 </div>
-                <div class="barre-de-recherche choix-nombre">
+                <div class="barre-de-recherche choix-nombre bar">
                     <input name="nombreAAfficher" id="choix-nombre" autofocus="false" type="number" autocomplete="off" min=0
                         value=50>
                 </div>
-                <button type="submit" class="barre-de-recherche bouton-envoie" id="bouton-envoie">✔️</button>
+                <button type="submit" class="barre-de-recherche bouton-envoie bar" id="bouton-envoie">✔️</button>
                 <div class="listeDeSeQuiDoitÊtreAfficher">
                     <input type="checkbox" name="Image" checked="true"><label>Image</label><br>
                     <input type="checkbox" name="Name" checked="true"><label>Nom</label><br>

@@ -141,25 +141,3 @@ func TrierParPetinance(liste []string, listeID []int) []int {
 	}
 	return listeID
 }
-
-/*
-func TrierParPetinance(liste []string, listeID []int) []int {
-	for i := 0; i < len(listeID)-1; i++ {
-		plusPetit := i
-		for j := i + 1; j < len(listeID); j++ {
-			if len(liste[listeID[plusPetit]-1]) > len(liste[listeID[j]-1]) {
-				plusPetit = j
-			}
-		}
-		if plusPetit != i {
-			temps := liste[listeID[i]-1]
-			tempsID := listeID[i]
-			liste[listeID[i]-1] = liste[listeID[plusPetit]-1]
-			listeID[i] = listeID[plusPetit]
-			liste[listeID[plusPetit]-1] = temps
-			listeID[plusPetit] = tempsID
-		}
-	}
-	return listeID
-}
-*/
