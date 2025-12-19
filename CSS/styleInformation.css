@@ -4,10 +4,12 @@ img{
     border: solid 2px black;
     border-radius: 12px;
     object-fit: contain;
+    background-color: white;
 }
-
+ 
 
 #blocGauche{
+    transition: 0.2s;
     position: relative;
     display: flex;
     /* align-items: center; */
@@ -16,8 +18,62 @@ img{
     position: absolute;
     top: 0px;
     right: 0px;
-    width: 100px;
+    width: 200px;
     height: 100%;
+    background-color: rgb(241, 241, 255);
+    box-shadow: -2px 0px 5px rgb(168, 168, 168);
+}
+
+#blocGauche:hover{
+    transition: 0.2s;
+    box-shadow: -2px 0px 10px rgb(168, 168, 168);
+}
+
+#blocGauche:hover #Image {
+    animation: rebond infinite 1s;
+}
+
+#blocGauche:hover #Name {
+    animation: couleur infinite 1s;
+}
+
+@keyframes rebond{
+    0%{
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes couleur {
+    0%{
+        color: red;
+    }
+    25% {
+        color: rgb(0, 0, 255);
+    }
+    50%{
+        color: rgb(46, 196, 0);
+    }
+    75% {
+        color: rgb(175, 0, 134);
+    }
+    100% {
+        color: red;
+    }
+}
+
+#Image{
+    position: absolute;
+    top:20px;
+}
+
+#Name {
+    position: absolute;
+    top: 70px;
     color: red;
-    background-color: azure;
 }
