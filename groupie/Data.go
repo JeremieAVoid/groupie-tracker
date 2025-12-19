@@ -3,7 +3,7 @@ package groupie
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 )
 
@@ -62,7 +62,7 @@ func Ressource(url string) string {
 	req, _ := http.NewRequest("GET", url, nil)
 	res, _ := http.DefaultClient.Do(req)
 	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
+	body, _ := io.ReadAll(res.Body)
 	valeur := string(body)
 	if valeur[0] != '[' {
 		total := ""
