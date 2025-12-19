@@ -2,7 +2,7 @@ package main
 
 import (
     "fmt"
-    "groupie/groupie" // maintenant que ton module s'appelle groupie
+    "groupie/src" // maintenant que ton module s'appelle groupie
     "log"
     "net/http"
     "os/exec"
@@ -15,24 +15,24 @@ func main() {
 	lotDeListe := groupie.ChargerLesDonnées()
 	listeID := []int{}
     // Route HTML
-    http.HandleFunc("/HTML/Informations.html", func(w http.ResponseWriter, r *http.Request) {
+    http.HandleFunc("/static/templates/Informations.html", func(w http.ResponseWriter, r *http.Request) {
         w.Header().Set("Content-Type", "text/html; charset=utf-8")
         http.ServeFile(w, r, "HTML/Informations.html")
     })
     // Routes CSS
-    http.HandleFunc("/CSS/style.css", func(w http.ResponseWriter, r *http.Request) {
+    http.HandleFunc("/static/style/style.css", func(w http.ResponseWriter, r *http.Request) {
         w.Header().Set("Content-Type", "text/css; charset=utf-8")
         http.ServeFile(w, r, "CSS/style.css")
     })
-    http.HandleFunc("/CSS/styleBarreDeRecherche.css", func(w http.ResponseWriter, r *http.Request) {
+    http.HandleFunc("/static/style/styleBarreDeRecherche.css", func(w http.ResponseWriter, r *http.Request) {
         w.Header().Set("Content-Type", "text/css; charset=utf-8")
         http.ServeFile(w, r, "CSS/styleBarreDeR     echerche.css")
     })
-    http.HandleFunc("/CSS/styleInformation.css", func(w http.ResponseWriter, r *http.Request) {
+    http.HandleFunc("/static/style/styleInformation.css", func(w http.ResponseWriter, r *http.Request) {
         w.Header().Set("Content-Type", "text/css; charset=utf-8")
         http.ServeFile(w, r, "CSS/styleInformation.css")
     })
-    http.HandleFunc("/CSS/styleTemplate.css", func(w http.ResponseWriter, r *http.Request) {
+    http.HandleFunc("/static/style/styleTemplate.css", func(w http.ResponseWriter, r *http.Request) {
         w.Header().Set("Content-Type", "text/css; charset=utf-8")
         http.ServeFile(w, r, "CSS/styleTemplate.css")
     })
@@ -40,7 +40,7 @@ func main() {
     // http.HandleFunc("/open", func(w http.ResponseWriter, r *http.Request) {
         // w.Header().Set("Content-Type", "text/plain; charset=utf-8")
         go func() {
-            _ = exec.Command("xdg-open", "http://localhost:8080/HTML/homepage.html").Start()
+            _ = exec.Command("xdg-open", "http://localhost:8080/static/templates/homepage.html").Start()
         }()
         // w.Write([]byte("Attempted to open browser"))
     // })
@@ -63,7 +63,7 @@ func main() {
 			fmt.Println("Problème !")
 			// panic(err)
 		} else {
-			groupie.ComplétéLaPageInformation(id-1, listeID, lotDeListe, "HTML/Informations.html", w, r)
+			groupie.ComplétéLaPageInformation(id-1, listeID, lotDeListe, "static/templates/Informations.html", w, r)
 		}
 		// w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		// http.ServeFile(w, r, "HTML/Informations.html")
