@@ -114,7 +114,7 @@ func main() {
 			fmt.Println("Problème !")
 			// panic(err)
 		} else {
-			groupie.ComplétéLaPageInformation(id-1, listeID, lotDeListe, "HTML/Informations.html", w, r)
+			groupie.ComplétéLaPageInformation(id-1, listeID, lotDeListe, "static/templates/Informations.html", w, r)
 		}
 		// w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		// http.ServeFile(w, r, "HTML/Informations.html")
