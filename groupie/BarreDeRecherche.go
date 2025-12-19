@@ -4,7 +4,7 @@ import "strconv"
 
 // ici, on vas triée en fonction de la méthode choisie. Ce qui sera retourner sera le bon aurdre des ID.
 func Trie(lotDeListe LotDeListe, méthode string, recherche string, nombreMaximum int) []int {
-	println("-------")
+	// println("-------")
 	listeDesArtistes := lotDeListe.listeDesArtistes
 	// listeDesLocations := lotDeListe.listeDesLocations
 	listeDesDates := lotDeListe.listeDesDates
@@ -86,11 +86,11 @@ func Trie(lotDeListe LotDeListe, méthode string, recherche string, nombreMaximu
 	if len(recherche) > 0 {
 		listeDesID = TrierParPetinance(liste, listeDesID)
 	}
-	println("--Début DEBUT trieParPetinance--")
-	for i := 0; i < len(listeDesID); i++ {
-		println(liste[i] + "  " + strconv.Itoa(listeDesID[i]))
-	}
-	println("--Fin--")
+	// println("--Début DEBUT trieParPetinance--")
+	// for i := 0; i < len(listeDesID); i++ {
+	// 	println(liste[i] + "  " + strconv.Itoa(listeDesID[i]))
+	// }
+	// println("--Fin--")
 	return listeDesID
 }
 

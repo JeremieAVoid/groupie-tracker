@@ -5,11 +5,21 @@
     </head>
     <body>
         <div class="bloc">
-            <p class="prénom">{{.Prénom}}</p>
-            <img src={{.Image}}>
-            <p class="DateDeCréation">{{.DateDeCréation}}</p>
-            <p class="Membres">{{.Membres}}</p>
-            <p class="PremierAlbum">{{.PremierAlbum}}</p>
+            <p class={{.VisiblePrénom}}>{{.Prénom}}</p>
+            <img class={{.VisibleImage}} src={{.Image}}>
+            <p class={{.VisibleDateDeCréation}}>{{.DateDeCréation}}</p>
+            <p class={{.VisibleMembres}}>{{.Membres}}</p>
+            <p class={{.VisiblePremierAlbum}}>{{.PremierAlbum}}</p>
+            <form action="informationsAppelle">
+                <button name="Id" value={{.Id}} type="submit" class="boutonDeSubmit">En voir plus</button>
+            </form>
         </div>
+        <!-- <div class="bloc">
+            <p class="prénom textCouleur">Prénom</p>
+            <img class="" src=Image>
+            <p class="DateDeCréation textCouleur">2000</p>
+            <p class="Membres textCouleur">Membres</p>
+            <p class="PremierAlbum textCouleur">PremierAlbum</p>
+        </div> -->
     </body>
 </html>
