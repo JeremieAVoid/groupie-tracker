@@ -1,7 +1,6 @@
 package groupie
 
 import (
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -18,6 +17,7 @@ func TrouverUnElementParID_ArtisteS(ID int, liste []ArtisteS) ArtisteS {
 			return liste[i]
 		}
 	}
+	println("Rien n'a été trouvé")
 	return liste[0]
 }
 
@@ -31,6 +31,7 @@ func TrouverUnElementParID_LocationsS(ID int, liste []LocationsS) LocationsS {
 			return liste[i]
 		}
 	}
+	println("Rien n'a été trouvé")
 	return liste[0]
 }
 
@@ -44,6 +45,7 @@ func TrouverUnElementParID_DatesS(ID int, liste []DatesS) DatesS {
 			return liste[i]
 		}
 	}
+	println("Rien n'a été trouvé")
 	return liste[0]
 }
 
@@ -57,6 +59,7 @@ func TrouverUnElementParID_RelationS(ID int, liste []RelationS) RelationS {
 			return liste[i]
 		}
 	}
+	println("Rien n'a été trouvé")
 	return liste[0]
 }
 
@@ -99,7 +102,7 @@ func PlacerLesRésultaDeRecherche(w http.ResponseWriter, r *http.Request, listeI
 			DateDeCréation: strconv.Itoa(blocArtiste.CreationDate),
 			Membres:        blocArtiste.Members[0],
 			PremierAlbum:   blocArtiste.FirstAlbum,
-			Id:             strconv.Itoa(blocArtiste.Id),
+			Id:             strconv.Itoa(i + 1),
 		}
 		if r.FormValue("Image") != "on" {
 			data2.Image = ""
@@ -139,14 +142,7 @@ func PlacerUnePage(w http.ResponseWriter, r *http.Request, data PageData, lienPa
 	}
 }
 
-func ComplétéLaPageInformation(idT string, listeID []int, lotDeListe LotDeListe, nomPage string, w http.ResponseWriter, r *http.Request) {
-	id, err := strconv.Atoi(idT)
-	if err != nil {
-		fmt.Println(idT)
-		fmt.Println("Problème !")
-		// panic(err)
-		return
-	}
+func ComplétéLaPageInformation(id int, listeID []int, lotDeListe LotDeListe, nomPage string, w http.ResponseWriter, r *http.Request) {
 	blocArtiste := TrouverUnElementParID_ArtisteS(listeID[id], lotDeListe.listeDesArtistes)
 
 	data2 := PageData{

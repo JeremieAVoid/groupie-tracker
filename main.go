@@ -29,7 +29,14 @@ func main() {
 
 	http.HandleFunc("/informationsAppelle", func(w http.ResponseWriter, r *http.Request) {
 		idT := r.FormValue("Id")
-		groupie.ComplétéLaPageInformation(idT, listeID, lotDeListe, "HTML/Informations.html", w, r)
+		id, err := strconv.Atoi(idT)
+		if err != nil {
+			fmt.Println(idT)
+			fmt.Println("Problème !")
+			// panic(err)
+		} else {
+			groupie.ComplétéLaPageInformation(id-1, listeID, lotDeListe, "HTML/Informations.html", w, r)
+		}
 		// w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		// http.ServeFile(w, r, "HTML/Informations.html")
 	})
