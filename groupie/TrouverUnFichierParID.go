@@ -74,6 +74,7 @@ type PageData struct {
 	VisiblePremierAlbum   string
 	Id                    string
 	TexteListeMembre      string
+	ListeConcert          string
 }
 
 func PlacerUnePage(w http.ResponseWriter, r *http.Request, data PageData, lienPage string) {

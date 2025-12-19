@@ -23,13 +23,6 @@ func PlacerLesRésultaDeRecherche(w http.ResponseWriter, r *http.Request, listeI
 	//page 1 :
 	for i := 0; i < len(listeID); i++ {
 		blocArtiste := TrouverUnElementParID_ArtisteS(listeID[i], lotDeListe.listeDesArtistes)
-		texteListeMembre := ""
-		for i := 0; i < len(blocArtiste.Members); i++ {
-			if i != 0 {
-				texteListeMembre += "\n"
-			}
-			texteListeMembre += "• " + blocArtiste.Members[i]
-		}
 
 		data2 := PageData{
 			Prénom:           blocArtiste.Name,
@@ -37,7 +30,7 @@ func PlacerLesRésultaDeRecherche(w http.ResponseWriter, r *http.Request, listeI
 			DateDeCréation:   strconv.Itoa(blocArtiste.CreationDate),
 			PremierAlbum:     blocArtiste.FirstAlbum,
 			Id:               strconv.Itoa(i + 1),
-			TexteListeMembre: texteListeMembre,
+			TexteListeMembre: CrééLeTexteListeMembre(blocArtiste),
 		}
 		if r.FormValue("Image") != "on" {
 			data2.Image = ""
