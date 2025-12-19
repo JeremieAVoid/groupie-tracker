@@ -19,12 +19,12 @@ main{
 }
 
 body {
-  display: flex;           /* active Flexbox */
-  flex-direction: column;   /* empile les éléments verticalement */
-  justify-content:center ; /* centre horizontalement */
-  align-items:center ;     /* centre verticalement */
-  height: 100vh;           /* prend toute la hauteur de la fenêtre */
-  margin: 0;               /* enlève les marges par défaut */
+  /* display: flex;            */
+  /* flex-direction: column;    */
+  /* justify-content:center ; */
+  /* align-items:center ;    */
+  /* height: 100vh;            */
+  margin: 0;          
   background-color: rgb(53, 109, 112); 
 }
 

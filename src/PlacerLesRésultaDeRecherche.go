@@ -18,7 +18,7 @@ func PlacerLesRésultaDeRecherche(w http.ResponseWriter, r *http.Request, listeI
 		VisibleMembres:        "",
 		VisiblePremierAlbum:   "",
 	}
-	PlacerUnePage(w, r, data, "HTML/main.html")
+	PlacerUnePage(w, r, data, "static/templates/main.html")
 
 	//page 1 :
 	for i := 0; i < len(listeID); i++ {
@@ -53,6 +53,6 @@ func PlacerLesRésultaDeRecherche(w http.ResponseWriter, r *http.Request, listeI
 			data2.VisiblePremierAlbum = "invisible"
 		}
 
-		PlacerUnePage(w, r, data2, "HTML/templateBlocSimple.html")
+		PlacerUnePage(w, r, data2, "static/templates/templateBlocSimple.html")
 	}
 }
