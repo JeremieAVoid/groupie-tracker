@@ -10,13 +10,19 @@
     <body> 
         <div id="hautDePage">
             <div id="logo"></div>
-            <button class="btn" id="btn-aceuil">
-                <div id="iconeMaison"></div>
-            </button>
-            <button class="btn" id="btn-recherche">
-                <div id="iconeLoupe"></div>
-            </button>
-            <button class="btn" id="btn-hasard"></button>
+            <form action="CliqueBoutonDeNavigation">
+                <button class="btn" id="btn-aceuil" name="idBouton" value="0">
+                    <div id="iconeMaison"></div>
+                </button>
+            </form>
+            <form action="CliqueBoutonDeNavigation">
+                <button class="btn" id="btn-recherche" name="idBouton" value="1">
+                    <div id="iconeLoupe"></div>
+                </button>
+            </form>
+            <form action="CliqueBoutonDeNavigation">
+                <button class="btn" id="btn-hasard" name="idBouton" value="2"></button>
+            </form>
         </div>
         <header>
             <form action="Rechercher" class="blocWidth2">

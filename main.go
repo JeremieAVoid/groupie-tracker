@@ -42,6 +42,19 @@ func main() {
 		// http.ServeFile(w, r, "HTML/Informations.html")
 	})
 
+	http.HandleFunc("/CliqueBoutonDeNavigation", func(w http.ResponseWriter, r *http.Request) {
+		nom := "main.html"
+		switch r.FormValue("idBouton") {
+		case "0":
+			nom = "homepage.html"
+		case "1":
+			nom = "main.html"
+		}
+
+		w.Header().Set("Content-Type", "text/html; charset=utf-8")
+		http.ServeFile(w, r, "static/templates/"+nom)
+	})
+
 	// 2 - Les CSS :
 	// http.HandleFunc("static/style/style.css", func(w http.ResponseWriter, r *http.Request) {
 	// 	w.Header().Set("Content-Type", "text/css; charset=utf-8")
@@ -60,10 +73,8 @@ func main() {
 	// 	http.ServeFile(w, r, "static/style/styleTemplate.css")
 	// })
 
-
 	fs := http.FileServer(http.Dir("static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
-
 
 	http.HandleFunc("static/templates/Informations.html", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
