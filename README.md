@@ -1,3 +1,16 @@
+Structure du projet :
+├─src
+├─static
+├─go.mod
+├─README.md
+
+
+
+
+
+
+Pour le test :
+
 # Comment faire pour remplacer un ID HTML en GO ?
 
 Les scriptes :
