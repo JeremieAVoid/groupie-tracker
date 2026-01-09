@@ -1,8 +1,8 @@
 img{
-    width: 100px;
-    height: 100px;
+    width: 140px;
+    height: 140px;
     border: solid 2px black;
-    border-radius: 100px;
+    border-radius: 140px;
     object-fit: contain;
     background-color: white;
     animation: rotation 2s linear infinite;
@@ -84,11 +84,27 @@ img{
 
 #Name {
     position: absolute;
-    top: 140px;
+    top: 160px;
     color: red;
 }
 
 #CreationDate {
     color: red;
     font-style: italic;
+    text-decoration: underline;
+}
+#Members {
+    color: red;
+    font-style: italic;
+    text-decoration: underline;  
+}
+#FirstAlbum {
+    color: red;
+    font-style: italic;
+    text-decoration: underline; 
+}
+#ConcertDates {
+    color: red;
+    font-style: italic;
+    text-decoration: underline; 
 }

@@ -6,11 +6,14 @@
     </head>
     <body>
         <hr>
-        <h5>Membres</h5>
+        <p id="Members">Membres</p>
         <pre>{{.TexteListeMembre}}</pre>
-        <p id="CreationDate">Date de création : {{.DateDeCréation}}</p>
-        <p id="FirstAlbum">Le premier album est : {{.PremierAlbum}}</p>
-        <pre id="ConcertDates">{{.ListeConcert}}</pre>
+        <p id="CreationDate">Date de création :</p>
+        <pre>{{.DateDeCréation}}</pre>
+        <p id="FirstAlbum">Date de premier album :</p>
+        <pre>{{.PremierAlbum}}</pre>
+        <p id="ConcertDates">Dates de concert : </p>       
+        <pre>{{.ListeConcert}}</pre>
         <div id="blocGauche">
             <img id="Image" src={{.Image}}>
             <h2 id="Name">{{.Prénom}}</h2>
