@@ -29,19 +29,22 @@
             </div>
         </head>
 
-        <hr>
-        <p id="Members">Membres</p>
-        <pre>{{.TexteListeMembre}}</pre>
-        <p id="CreationDate">Date de création :</p>
-        <pre>{{.DateDeCréation}}</pre>
-        <p id="FirstAlbum">Date de premier album :</p>
-        <pre>{{.PremierAlbum}}</pre>
-        <p id="ConcertDates">Dates de concert : </p>       
-        <pre>{{.ListeConcert}}</pre>
-        <div id="blocGauche">
-            <img id="Image" src={{.Image}}>
-            <h2 id="Name">{{.Prénom}}</h2>
-            <hr>
-        </div>
+        <main>
+            <div id="blocInformation">
+                <p class="texteTitreCatégorie" id="Members">Membres</p>
+                <pre>{{.TexteListeMembre}}</pre>
+                <p class="texteTitreCatégorie" id="CreationDate">Date de création :</p>
+                <pre>{{.DateDeCréation}}</pre>
+                <p class="texteTitreCatégorie" id="FirstAlbum">Date de premier album :</p>
+                <pre>{{.PremierAlbum}}</pre>
+                <p class="texteTitreCatégorie" id="ConcertDates">Dates de concert : </p>       
+                <pre>{{.ListeConcert}}</pre>
+            </div>
+            <div id="blocGauche">
+                <img id="Image" src={{.Image}}>
+                <h2 id="Name">{{.Prénom}}</h2>
+                <hr>
+            </div>
+        </main>
     </body>
 </html>

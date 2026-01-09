@@ -1,5 +1,25 @@
+@font-face {
+    font-family: 'Raleway Semi Bold';
+    src: url('../font/Raleway/static/Raleway-SemiBold.ttf') format('truetype');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Raleway ExtraBold';
+    src: url('../font/Raleway/static/Raleway-ExtraBold.ttf') format('truetype');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Raleway LightItalic';
+    src: url('../font/Raleway/static/Raleway-LightItalic.ttf') format('truetype');
+    font-style: normal;
+}
+
 body{
-    overflow-x: hidden
+    overflow-x: hidden;
+    background-color: rgb(255, 245, 252);
+    margin-right: 230px !important;
 }
 
 img{
@@ -11,7 +31,6 @@ img{
     background-color: white;
     animation: rotation 2s linear infinite;
 }
- 
 
 #blocGauche{
     transition: 0.2s;
@@ -86,29 +105,66 @@ img{
     top:20px;
 }
 
+.texteTitreCatégorie, #Name {
+    color: rgb(184, 8, 8);
+    font-style: italic;
+    text-decoration: underline;
+    font-family: 'Raleway ExtraBold';
+}
+
+.texteTitreCatégorie::before{
+    content: '► ';
+    color:black;
+    text-decoration: none;
+    font-style: normal;
+}
+
 #Name {
     position: absolute;
     top: 160px;
-    color: red;
+    text-decoration: none;
+    font-style: normal;
 }
 
-#CreationDate {
-    color: red;
-    font-style: italic;
-    text-decoration: underline;
+pre{
+    font-family: 'Raleway Semi Bold';
 }
-#Members {
-    color: red;
-    font-style: italic;
-    text-decoration: underline;  
+
+#blocInformation{
+    border: solid 0px;
+    box-shadow: 0px 0px 5px black;
+    border-radius: 21px;
+    max-width: 400px;
+    min-width: 20px;
+    min-height: 20px;
+    width: 80%;
+    height: auto;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+    /* display: flex;
+    justify-self: center; */
+    /* justify-content: center; */
+    align-items: center;
+    padding: 10px;
+    background-color: rgba(240, 248, 255, 0.532);
 }
-#FirstAlbum {
-    color: red;
-    font-style: italic;
-    text-decoration: underline; 
-}
-#ConcertDates {
-    color: red;
-    font-style: italic;
-    text-decoration: underline; 
+
+@media (max-width:566px){
+    #blocGauche{
+        position: relative;
+        margin-top: 30px;
+        width: 100%;
+        height: 250px;
+    }
+    body{
+        margin-right: 0px !important;
+    }
+    #blocGauche img {
+        width: 100px;
+        height: 100px;
+    }
+    #blocGauche h2 {
+        margin: 0px;
+    }
 }
