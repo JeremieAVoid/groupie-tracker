@@ -1,10 +1,11 @@
 img{
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     border: solid 2px black;
-    border-radius: 12px;
+    border-radius: 100px;
     object-fit: contain;
     background-color: white;
+    animation: rotation 2s linear infinite;
 }
  
 
@@ -35,6 +36,15 @@ img{
 
 #blocGauche:hover #Name {
     animation: couleur infinite 1s;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes rebond{
@@ -74,6 +84,11 @@ img{
 
 #Name {
     position: absolute;
-    top: 70px;
+    top: 140px;
     color: red;
+}
+
+#CreationDate {
+    color: red;
+    font-style: italic;
 }
