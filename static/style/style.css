@@ -18,15 +18,6 @@ main{
     justify-content: center;
 }
 
-body {
-  /* display: flex;            */
-  /* flex-direction: column;    */
-  /* justify-content:center ; */
-  /* align-items:center ;    */
-  /* height: 100vh;            */
-  margin: 0;          
-  background-color: rgb(53, 109, 112); 
-}
 
 .Bienvenue {
   font-family: 'Arial', sans-serif;
@@ -36,11 +27,11 @@ body {
 
 footer {
   display: flex;
-  position: fixed;
-  bottom: 0;
-  width: 200%;
+  justify-content: center;
+  width: 100%;
   background-color: #333;
   color: white;
-  text-align: center;
-  padding: 10px 0;   
+  padding: 3px 0;   
+  z-index: 100;
+  margin-top: 50px;
 }

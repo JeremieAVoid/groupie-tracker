@@ -4,20 +4,65 @@
     <meta charset="UTF-8">
     <title>Groupie - Accueil</title>
     <link rel="stylesheet" href="../../static/style/style.css">
-
-    
+    <link rel="stylesheet" href="../../static/style/boutonAvecYeux.css">
+    <script defer src="../../static/script/Yeux.js"></script>
+    <link rel="stylesheet" href="../../static/style/styleHautDePage.css" />
+    <link rel="stylesheet" href="../../static/style/styleHomePage.css">
   </header>
-  <head>
-    <h1>Bienvenue sur Groupiee tracker</h1>
-    <body>
-      <div class="body-homepage">
-      <button onclick="location.href='/main'">Bienvenue</button>
-      <title>Groupie</title>
+  <body class="body-homepage">
+    <head>
+      <div id="hautDePage">
+        <div id="logo">
+          <div id="logoIcone"></div>
+          <div id="logoIconeCentre"></div>
+        </div>
+        <form action="CliqueBoutonDeNavigation">
+          <button class="btn" id="btn-aceuil" name="idBouton" value="0">
+            <div id="iconeMaison"></div>
+          </button>
+        </form>
+        <form action="CliqueBoutonDeNavigation">
+          <button class="btn" id="btn-recherche" name="idBouton" value="1">
+            <div id="iconeLoupe"></div>
+          </button>
+        </form>
+        <form action="informationsAppelle">
+          <button class="btn" id="btn-hasard" name="idBoutonAléatoire" value="2"></button>
+        </form>
       </div>
+    </head>  
+    <main>
+
+      <div id="blocLogo">
+        <div class="blocLogo">
+          <div class="formePrincipale"></div>
+        </div>
+      </div>
+      <h1>Bienvenue sur Groupiee tracker</h1>
+      <div id="blocExplicatifHomePage">
+        <p>Venez découvrir plus de cinquante groupes musicaux ! Vous découvrirez ici la dates de création de ces groupes, les
+          membres qui les constitues, les spectacles auquel ils ont participé et bien plus encor !</p>
+        <!-- <p>Qu’attendez-vous pour venir sur notre site ?</p> -->
+      </div>
+      <form action="Rechercher">
+        <input class="invisible" name="Image" value = "on">
+        <input class="invisible" name="Name" value="on">
+        <input class="invisible" name="CreationDate" value="on">
+        
+        <button class="btn-yeux">
+          <div class="btn-yeuxDerrière">
+            <div class="œil"></div>
+            <div class="œil" style="right:50px;"></div>
+          </div>
+          <div name="pageAcceuil" value="1" type="submit" class="btn-yeuxDevant">REGARDER</div>
+        </button>
+      </form>
+
+      
+    </main>
     <footer class="footermain">
-        <p>© 2025  Tous droits réservés.</p>
+      <p>© 2026 Tous droits réservés.</p>
     </footer>
-    </body>
-  </head>
+  </body>
 </html>
 </DOCTYPE html>
