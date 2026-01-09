@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html> 
+<html lang="fr"> 
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../../static/style/styleInformation.css" />
+        <link rel="stylesheet" href="../../static/style/styleHautDePage.css" />
     </head>
     <body>
+        <head>
+            <div id="hautDePage">
+                <div id="logo">
+                    <div class="blocLogo">
+                        <div class="formePrincipale"></div>
+                    </div>
+                </div>
+                <form action="CliqueBoutonDeNavigation">
+                    <button class="btn" id="btn-aceuil" name="idBouton" value="0">
+                        <div id="iconeMaison"></div>
+                    </button>
+                </form>
+                <form action="CliqueBoutonDeNavigation">
+                    <button class="btn" id="btn-recherche" name="idBouton" value="1">
+                        <div id="iconeLoupe"></div>
+                    </button>
+                </form>
+                <form action="informationsAppelle">
+                    <button class="btn" id="btn-hasard" name="idBoutonAléatoire" value="2"></button>
+                </form>
+            </div>
+        </head>
+
         <hr>
         <p id="Members">Membres</p>
         <pre>{{.TexteListeMembre}}</pre>
