@@ -49,6 +49,8 @@ header {
 .choix-catégorie {
     border-right: solid 1px black;
     width: 20%;
+    border-top-left-radius: 13px;
+    border-bottom-left-radius: 13px;
 }
 
 .choix-texte {
@@ -156,19 +158,21 @@ header {
     z-index: 4;
 }
 
+.listeDeSeQuiDoitÊtreAfficher:hover label {
+    position: relative;
+    top:-5px;
+}
+
 label {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 
-/* Personnalisation des checkbox : */
 input[type=checkbox] {
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
-}
-
-input[type=checkbox] {
+    
     transition: 0.2s;
     -border-radius: 4px;
     height: 15px;
