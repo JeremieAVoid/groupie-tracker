@@ -2,7 +2,7 @@ package main
 
 import (
     "fmt"
-    "groupie" // maintenant que ton module s'appelle groupie
+    "groupie"
     "log"
     "net/http"
     "os/exec"
@@ -58,7 +58,7 @@ func main() {
         w.Write([]byte("Attempted to open browser"))
     })
 
-    // 🚀 Lancer le serveur directement
+    // Lancer le serveur directement
     log.Println("Serveur lancé sur http://localhost:8080")
     if err := http.ListenAndServe(":8080", nil); err != nil {
         log.Fatal(err)
