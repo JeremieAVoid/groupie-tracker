@@ -42,6 +42,10 @@ type LotDeListe struct {
 	listeDesRelations []RelationS
 }
 
+func NombreLotDeListe(lotDeListe LotDeListe) int {
+	return len(lotDeListe.listeDesArtistes)
+}
+
 func ChargerLesDonnées() LotDeListe {
 	lotDeListe := LotDeListe{}
 	bloque := "https://groupietrackers.herokuapp.com/api/"

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	groupie "groupie/src"
 	"log"
+	"math/rand"
 	"net/http"
 	"os/exec"
 	"strconv"
@@ -29,13 +30,23 @@ func main() {
 	})
 
 	http.HandleFunc("/informationsAppelle", func(w http.ResponseWriter, r *http.Request) {
-		idT := r.FormValue("Id")
-		id, err := strconv.Atoi(idT)
-		if err != nil {
-			fmt.Println(idT)
-			fmt.Println("Problème !")
-			// panic(err)
+		id := 0
+		erreur := false
+		if r.FormValue("idBoutonAléatoire") == "2" {
+			id = rand.Intn(groupie.NombreLotDeListe(lotDeListe))
 		} else {
+			idT := r.FormValue("Id")
+			id2, err := strconv.Atoi(idT)
+			if err != nil {
+				erreur = true
+				fmt.Println(idT)
+				fmt.Println("Problème !")
+				// panic(err)
+			} else {
+				id = id2
+			}
+		}
+		if !erreur {
 			groupie.ComplétéLaPageInformation(id-1, listeID, lotDeListe, "static/templates/Informations.html", w, r)
 		}
 		// w.Header().Set("Content-Type", "text/html; charset=utf-8")
@@ -49,6 +60,9 @@ func main() {
 			nom = "homepage.html"
 		case "1":
 			nom = "main.html"
+			// case "2":
+			// identifiant := rand.Intn(groupie.NombreLotDeListe(lotDeListe))
+			// nom = "Informations.HTML" + "?Id=" + strconv.Itoa(identifiant)
 		}
 
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
