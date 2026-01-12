@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
     <body>
         <div class="blocLogo">
@@ -55,4 +55,103 @@
             } */
         </style>
     </body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Groupie - Accueil</title>
+    <link rel="stylesheet" href="/static/style/style.css">
+</head>
+
+<body>
+    <style>
+        /* Reset de base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Fond général */
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* / Header / */
+.header-home {
+    text-align: center;
+    padding: 60px 20px 20px;
+}
+
+.header-home h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.header-home p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+/* / Contenu principal / */
+.body-homepage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+/* / Bouton / */
+.btn-start {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 30px;
+    background-color: #ff4c60;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-start:hover {
+    background-color: #ff2e45;
+    transform: scale(1.05);
+}
+
+/* / Footer */ 
+.footermain {
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9rem;
+    opacity: 0.6;
+}
+    </style>
+    <header class="header-home">
+        <h1>🎵 Groupie Tracker</h1>
+        <p>Explorez vos artistes préférés</p>
+    </header>
+
+    <main class="body-homepage">
+        <button class="btn-start" onclick="location.href='/main'">
+            Entrer sur le site
+        </button>
+    </main>
+
+    <footer class="footermain">
+        <p>© 2025 — Tous droits réservés.</p>
+    </footer>
+</body>
+
 </html>
