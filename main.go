@@ -18,62 +18,15 @@ func main() {
 	listeID := []int{}
 
 	http.HandleFunc("/Rechercher", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Println(r.FormValue("Image"))
-		if r.FormValue("pageAcceuil") == "1" {
-			fmt.Println("passe par le début")
-			listeID = groupie.Recherche(lotDeListe, "Name", "", 50)
-			groupie.PlacerLesRésultaDeRecherche(w, r, listeID, lotDeListe)
-		} else {
-			nombreAAfficherT := r.FormValue("nombreAAfficher")
-			nombreAAfficher := groupie.TransformerEnNombre(nombreAAfficherT)
-			listeID = groupie.Recherche(lotDeListe, r.FormValue("catégorie"), r.FormValue("recherche"), nombreAAfficher)
-			texte := ""
-			for i := 0; i < len(listeID); i++ {
-				texte += strconv.Itoa(listeID[i]) + "\n"
-			}
-			groupie.PlacerLesRésultaDeRecherche(w, r, listeID, lotDeListe)
-			// fmt.Fprintln(w, texte)
-		}
+		listeID = FonctionRecherche(w, r, listeID, lotDeListe)
 	})
 
 	http.HandleFunc("/informationsAppelle", func(w http.ResponseWriter, r *http.Request) {
-		id := 0
-		erreur := false
-		if r.FormValue("idBoutonAléatoire") == "2" {
-			id = rand.Intn(groupie.NombreLotDeListe(lotDeListe))
-		} else {
-			idT := r.FormValue("Id")
-			id2, err := strconv.Atoi(idT)
-			if err != nil {
-				erreur = true
-				fmt.Println(idT)
-				fmt.Println("Problème !")
-				// panic(err)
-			} else {
-				id = id2
-			}
-		}
-		if !erreur {
-			groupie.ComplétéLaPageInformation(id-1, listeID, lotDeListe, "static/templates/Informations.html", w, r)
-		}
-		// w.Header().Set("Content-Type", "text/html; charset=utf-8")
-		// http.ServeFile(w, r, "HTML/Informations.html")
+		FonctionInformationsAppelle(w, r, listeID, lotDeListe)
 	})
 
 	http.HandleFunc("/CliqueBoutonDeNavigation", func(w http.ResponseWriter, r *http.Request) {
-		nom := "main.html"
-		switch r.FormValue("idBouton") {
-		case "0":
-			nom = "homepage.html"
-		case "1":
-			nom = "main.html"
-			// case "2":
-			// identifiant := rand.Intn(groupie.NombreLotDeListe(lotDeListe))
-			// nom = "Informations.HTML" + "?Id=" + strconv.Itoa(identifiant)
-		}
-
-		w.Header().Set("Content-Type", "text/html; charset=utf-8")
-		http.ServeFile(w, r, "static/templates/"+nom)
+		FonctionCliqueBoutonDeNavigation(w, r, listeID, lotDeListe)
 	})
 
 	fs := http.FileServer(http.Dir("static"))
@@ -103,4 +56,60 @@ func main() {
 	if err := http.ListenAndServe(":8080", nil); err != nil {
 		log.Fatal(err)
 	}
+}
+
+func FonctionRecherche(w http.ResponseWriter, r *http.Request, listeID []int, lotDeListe groupie.LotDeListe) []int {
+	if r.FormValue("pageAcceuil") == "1" {
+		listeID = groupie.Recherche(lotDeListe, "Name", "", 50)
+		groupie.PlacerLesRésultaDeRecherche(w, r, listeID, lotDeListe)
+	} else {
+		nombreAAfficherT := r.FormValue("nombreAAfficher")
+		nombreAAfficher := groupie.TransformerEnNombre(nombreAAfficherT)
+		listeID = groupie.Recherche(lotDeListe, r.FormValue("catégorie"), r.FormValue("recherche"), nombreAAfficher)
+		texte := ""
+		for i := 0; i < len(listeID); i++ {
+			texte += strconv.Itoa(listeID[i]) + "\n"
+		}
+		groupie.PlacerLesRésultaDeRecherche(w, r, listeID, lotDeListe)
+	}
+	return listeID
+}
+
+func FonctionCliqueBoutonDeNavigation(w http.ResponseWriter, r *http.Request, listeID []int, lotDeListe groupie.LotDeListe) {
+	nom := "main.html"
+	switch r.FormValue("idBouton") {
+	case "0":
+		nom = "homepage.html"
+	case "1":
+		FonctionRecherche(w, r, listeID, lotDeListe)
+		nom = "main.html"
+		return
+	}
+
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	http.ServeFile(w, r, "static/templates/"+nom)
+}
+
+func FonctionInformationsAppelle(w http.ResponseWriter, r *http.Request, listeID []int, lotDeListe groupie.LotDeListe) {
+	id := 0
+	erreur := false
+	if r.FormValue("idBoutonAléatoire") == "2" {
+		id = rand.Intn(groupie.NombreLotDeListe(lotDeListe))
+	} else {
+		idT := r.FormValue("Id")
+		id2, err := strconv.Atoi(idT)
+		if err != nil {
+			erreur = true
+			fmt.Println(idT)
+			fmt.Println("Problème !")
+			// panic(err)
+		} else {
+			id = id2
+		}
+	}
+	if !erreur {
+		groupie.ComplétéLaPageInformation(id-1, listeID, lotDeListe, "static/templates/Informations.html", w, r)
+	}
+	// w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	// http.ServeFile(w, r, "HTML/Informations.html")
 }

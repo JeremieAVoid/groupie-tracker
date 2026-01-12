@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
+        <title>Recherche – Groupie Tracker</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../static/style/styleGénéral.css" />
         <link rel="stylesheet" href="../../static/style/style.css"/>
         <link rel="stylesheet" href="../../static/style/styleBarreDeRecherche.css" />
         <link rel="stylesheet" href="../../static/style/styleTemplate.css" />
@@ -15,17 +17,21 @@
                 </div>
             </div>
             <form action="CliqueBoutonDeNavigation">
-                <button class="btn" id="btn-aceuil" name="idBouton" value="0">
+                <button class="btn" id="btn-aceuil" name="idBouton" value="0" type="submit">
                     <div id="iconeMaison"></div>
                 </button>
             </form>
             <form action="CliqueBoutonDeNavigation">
-                <button class="btn" id="btn-recherche" name="idBouton" value="1">
+                <input class="invisible" name="Image" value="on">
+                <input class="invisible" name="Name" value="on">
+                <input class="invisible" name="CreationDate" value="on">
+                <input class="invisible" name="pageAcceuil" value="1">
+                <button class="btn" id="btn-recherche" name="idBouton" value="1" type="submit">
                     <div id="iconeLoupe"></div>
                 </button>
             </form>
             <form action="informationsAppelle">
-                <button class="btn" id="btn-hasard" name="idBoutonAléatoire" value="2"></button>
+                <button class="btn" id="btn-hasard" name="idBoutonAléatoire" value="2" type="submit"></button>
             </form>
         </div>
         <header>

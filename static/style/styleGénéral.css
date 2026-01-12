@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'Raleway Semi Bold';
+    src: url('../font/Raleway/static/Raleway-SemiBold.ttf') format('truetype');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Raleway ExtraBold';
+    src: url('../font/Raleway/static/Raleway-ExtraBold.ttf') format('truetype');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Raleway LightItalic';
+    src: url('../font/Raleway/static/Raleway-LightItalic.ttf') format('truetype');
+    font-style: normal;
+}
+
+.invisible {
+    display: none;
+}
