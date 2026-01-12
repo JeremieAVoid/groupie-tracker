@@ -76,13 +76,13 @@ func FonctionRecherche(w http.ResponseWriter, r *http.Request, listeID []int, lo
 }
 
 func FonctionCliqueBoutonDeNavigation(w http.ResponseWriter, r *http.Request, listeID []int, lotDeListe groupie.LotDeListe) {
-	nom := "main.html"
+	nom := "recherche.html"
 	switch r.FormValue("idBouton") {
 	case "0":
 		nom = "homepage.html"
 	case "1":
 		FonctionRecherche(w, r, listeID, lotDeListe)
-		nom = "main.html"
+		nom = "recherche.html"
 		return
 	}
 

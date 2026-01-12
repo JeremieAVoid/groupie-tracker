@@ -18,7 +18,7 @@ func PlacerLesRésultaDeRecherche(w http.ResponseWriter, r *http.Request, listeI
 		VisibleMembres:        "",
 		VisiblePremierAlbum:   "",
 	}
-	PlacerUnePage(w, r, data, "static/templates/main.html")
+	PlacerUnePage(w, r, data, "static/templates/recherche.html")
 
 	//page 1 :
 	for i := 0; i < len(listeID); i++ {
