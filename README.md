@@ -18,7 +18,7 @@ Structure du projet :
 ├─┼─style
 ├─┼─┼─boutonAvecYeux.css #Effet CSS utilisé pour le boutons avec des yeux utilisé sur la page d'aceuil.
 ├─┼─┼─logo.css #style CSS du logo du site.
-├─┼─┼─style.css #CSS de la page d'aceuil.
+├─┼─┼─stylePageDeRecherche.css #CSS de la page de recherche.
 ├─┼─┼─styleBarreDeRecherche.css #CSS de la barre de recherche.
 ├─┼─┼─styleGénéral.css #CSS général du site.
 ├─┼─┼─styleHautDePage.css #CSS du <header> des pages HTML.
