@@ -1,6 +1,8 @@
 package groupie
 
-import "strconv"
+import (
+	"strconv"
+)
 
 // ici, on vas triée en fonction de la méthode choisie. Ce qui sera retourner sera le bon aurdre des ID.
 func Trie(lotDeListe LotDeListe, méthode string, recherche string, nombreMaximum int) []int {
@@ -117,6 +119,8 @@ trouve : quimange, avecquiilest, qui
 */
 
 func PeutÊtreVuAvecSeTermeDeRecherche(résultat string, recherche string) bool {
+	résultat = ToUpper(résultat)
+	recherche = ToUpper(recherche)
 	// 	recherche : 'qui'
 	// 	résultat : 'qui mange', 'avec qui il est', 'qui'
 	if résultat == recherche || len(recherche) == 0 {
@@ -139,4 +143,32 @@ func PeutÊtreVuAvecSeTermeDeRecherche(résultat string, recherche string) bool 
 		}
 	}
 	return false
+}
+
+func ToUpper(texte string) string {
+	//cette fonction ne fonctionne pas sur tout les accents.
+	résultat := ""
+	runes := []rune(texte)
+	for i := 0; i < len(texte); i++ {
+		if runes[i] >= 97 && runes[i] <= 122 {
+			résultat += (string)(runes[i] - 32)
+		} else {
+			listeMinuscule := []rune{'é', 'è', 'ô', 'û', 'â', 'ê', 'î', 'ö', 'ë', 'ü', 32}
+			listeMajuscule := []rune{'É', 'È', 'Ô', 'Û', 'Â', 'Ê', 'Î', 'Ö', 'Ë', 'Ü', 0}
+			vu := false
+			for j := 0; j < len(listeMinuscule); j++ {
+				if len(listeMajuscule) > j {
+					if runes[i] == listeMinuscule[j] {
+						runes[i] = listeMajuscule[j]
+						vu = true
+						break
+					}
+				}
+			}
+			if !vu {
+				résultat += (string)(runes[i])
+			}
+		}
+	}
+	return résultat
 }
