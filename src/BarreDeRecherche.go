@@ -8,7 +8,7 @@ import (
 func Trie(lotDeListe LotDeListe, méthode string, recherche string, nombreMaximum int) []int {
 	// println("-------")
 	listeDesArtistes := lotDeListe.listeDesArtistes
-	// listeDesLocations := lotDeListe.listeDesLocations
+	listeDesLocations := lotDeListe.listeDesLocations
 	listeDesDates := lotDeListe.listeDesDates
 	// listeDesRelations := lotDeListe.listeDesRelations
 
@@ -34,7 +34,7 @@ func Trie(lotDeListe LotDeListe, méthode string, recherche string, nombreMaximu
 			}
 		}
 		listeDesID = TrieParOdreAlphabétique(liste, listeID)
-	case "Members":
+	case "Members": //nombre de membre
 		for i := 0; i < len(listeDesArtistes); i++ {
 			if PeutÊtreVuAvecSeTermeDeRecherche(strconv.Itoa(len(listeDesArtistes[i].Members)), recherche) {
 				liste = append(liste, strconv.Itoa(listeDesArtistes[i].Id))
@@ -60,15 +60,16 @@ func Trie(lotDeListe LotDeListe, méthode string, recherche string, nombreMaximu
 			}
 		}
 		listeDesID = TriéLesDates(liste, listeID)
-	case "Locations":
-		for i := 0; i < len(listeDesArtistes); i++ {
-			if PeutÊtreVuAvecSeTermeDeRecherche(listeDesArtistes[i].Locations, recherche) {
-				liste = append(liste, listeDesArtistes[i].Locations)
-				listeID = append(listeID, listeDesArtistes[i].Id)
+	case "Locations": //liste des licalisation - normalement on ne peut plus l'appeler comme il est remplacer par les dates.
+		for i := 0; i < len(listeDesLocations); i++ {
+			if PeutÊtreVuAvecSeTermeDeRecherche(strconv.Itoa(len(listeDesLocations[i].Locations)), recherche) {
+				liste = append(liste, strconv.Itoa(len(listeDesLocations[i].Locations)))
+				listeN = append(listeN, len(listeDesLocations[i].Locations))
+				listeID = append(listeID, listeDesLocations[i].Id)
 			}
 		}
 		listeDesID = TrieParOdreAlphabétique(liste, listeID)
-	case "ConcertDates":
+	case "ConcertDates": // nombre de concert
 		for i := 0; i < len(listeDesDates); i++ {
 			if PeutÊtreVuAvecSeTermeDeRecherche(strconv.Itoa(len(listeDesDates[i].Dates)), recherche) {
 				liste = append(liste, strconv.Itoa(listeDesArtistes[i].Id))
