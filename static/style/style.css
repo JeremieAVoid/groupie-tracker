@@ -34,7 +34,7 @@ body {
   text-align: center;
 }
 
-footer {
+/*footer {
   display: flex;
   position: fixed;
   bottom: 0;
@@ -43,4 +43,59 @@ footer {
   color: white;
   text-align: center;
   padding: 10px 0;   
+}*/
+
+.body-homepage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.header-home {
+    text-align: center;
+    padding: 60px 20px 20px;
+}
+
+.header-home h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.header-home p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+/* Contenu principal */
+.body-homepage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+/* Bouton */
+.btn-start {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 30px;
+    background-color: #ff4c60;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-start:hover {
+    background-color: #ff2e45;
+    transform: scale(1.05);
+}
+
+/* Footer */
+.footermain {
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9rem;
+    opacity: 0.6;
 }

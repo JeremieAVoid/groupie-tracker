@@ -2,7 +2,7 @@ package main
 
 import (
     "fmt"
-    "groupie"
+    //"groupie"
     "groupie/src" // maintenant que ton module s'appelle groupie
     "log"
     "net/http"
@@ -25,7 +25,7 @@ func main() {
         w.Header().Set("Content-Type", "text/css; charset=utf-8")
         http.ServeFile(w, r, "CSS/style.css")
     })
-    http.HandleFunc("/static/style/styleBarreDeRecherche.css", func(w http.ResponseWriter, r *http.Request) {
+    http.HandleFunc("/static/style/styleBarre DeRecherche.css", func(w http.ResponseWriter, r *http.Request) {
         w.Header().Set("Content-Type", "text/css; charset=utf-8")
         http.ServeFile(w, r, "CSS/styleBarreDeR     echerche.css")
     })
@@ -38,14 +38,15 @@ func main() {
         http.ServeFile(w, r, "CSS/styleTemplate.css")
     })
     // Route /open
-    // http.HandleFunc("/open", func(w http.ResponseWriter, r *http.Request) {
-        // w.Header().Set("Content-Type", "text/plain; charset=utf-8")
-        go func() {
-            _ = exec.Command("xdg-open", "http://localhost:8080/static/templates/homepage.html").Start()
-        }()
+    http.HandleFunc("/open", func(w http.ResponseWriter, r *http.Request) {
+    w.Header().Set("Content-Type", "text/plain; charset=utf-8")
 
-        w.Write([]byte("Attempted to open browser"))
-    }
+    go func() {
+        _ = exec.Command("xdg-open", "http://localhost:8080/static/templates/homepage.html").Start()
+    }()
+
+    w.Write([]byte("Attempted to open browser"))
+})
 
     // Lancer le serveur directement
 
@@ -78,6 +79,5 @@ func main() {
             // 🚀 Lancer le serveur directement
     log.Println("Serveur lancé sur http://localhost:8080")
     if err := http.ListenAndServe(":8080", nil); err != nil {
-        log.Fatal(err) 
+        log.Fatal(err) }
 }
-
