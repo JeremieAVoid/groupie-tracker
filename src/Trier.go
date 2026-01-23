@@ -60,7 +60,7 @@ func TrieParOdreCroissant(liste []int, listeID []int) []int {
 
 func TriéLesDates(liste []string, listeID []int) []int {
 	//je vais tous les parcourire comme pour les autres fonction sauf que la, je vais vérifier, la date, mois, jours.
-	// le seul format valide est : 23-04-2006
+	// le seul format valide est : jj-mm-aaaa
 	for i := 0; i < len(liste)-1; i++ {
 
 		if len(liste[i]) != 10 {
